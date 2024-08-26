@@ -101,14 +101,6 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
       }, _callee, null, [[7, 23]]);
     }));
   };
-  var _useState = (0, _react.useState)(true),
-    _useState2 = _slicedToArray(_useState, 2),
-    isLoadingImage = _useState2[0],
-    setIsLoadingImage = _useState2[1];
-  var _useState3 = (0, _react.useState)(0),
-    _useState4 = _slicedToArray(_useState3, 2),
-    retryCount = _useState4[0],
-    setRetryCount = _useState4[1];
   var generateImageSearchHandler = function generateImageSearchHandler(ev) {
     if (retryCount != 3) {
       var imageSearchInput = document.getElementById("search-box");
