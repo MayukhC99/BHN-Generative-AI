@@ -10,10 +10,6 @@ var _react = _interopRequireWildcard(require("react"));
 var _reactstrap = require("reactstrap");
 var _reactLoadingSkeleton = _interopRequireWildcard(require("react-loading-skeleton"));
 require("react-loading-skeleton/dist/skeleton.css");
-<<<<<<< Updated upstream
-=======
-var _how_to_use = _interopRequireDefault(require("./images/how_to_use.gif"));
->>>>>>> Stashed changes
 var _uuid = require("uuid");
 var _base = _interopRequireDefault(require("./base64"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -105,8 +101,6 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
       }, _callee, null, [[7, 23]]);
     }));
   };
-<<<<<<< Updated upstream
-=======
   var _useState = (0, _react.useState)(true),
     _useState2 = _slicedToArray(_useState, 2),
     isLoadingImage = _useState2[0],
@@ -115,7 +109,6 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     retryCount = _useState4[0],
     setRetryCount = _useState4[1];
->>>>>>> Stashed changes
   var generateImageSearchHandler = function generateImageSearchHandler(ev) {
     if (retryCount != 3) {
       var imageSearchInput = document.getElementById("search-box");
@@ -245,11 +238,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
   }, "How to use"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "how-to-use-gif"
   }, /*#__PURE__*/_react["default"].createElement("img", {
-<<<<<<< Updated upstream
     src: howToUseGif
-=======
-    src: _how_to_use["default"]
->>>>>>> Stashed changes
   }))))));
 };
 var _default = exports["default"] = AIWidgetModal;
