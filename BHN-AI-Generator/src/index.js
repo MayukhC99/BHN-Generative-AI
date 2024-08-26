@@ -1,41 +1,51 @@
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { uploadDirect } from '@uploadcare/upload-client'
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import { uploadDirect } from '@uploadcare/upload-client'
 import React, { useState } from 'react';
 import {
     Button, Modal, ModalHeader, ModalBody, ModalFooter,
     Form, Row, Col, Input,
     Card, CardBody, CardTitle, CardImg, CardGroup
 } from 'reactstrap';
+import { v4 as uuidv4 } from 'uuid';
+
 import base64s from './base64';
 
-const dataURLtoFile = (dataurl, filename) => {
-    const arr = dataurl.split(',');
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[arr.length - 1]);
-    // eslint-disable-next-line id-length
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
+function DataURIToBlob(dataURI) {
+    const splitDataURI = dataURI.split(',')
+    const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
+    const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
 
-    // eslint-disable-next-line no-plusplus
-    while (n--) {
-        u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], filename, { type: mime });
-};
+    const ia = new Uint8Array(byteString.length)
+    for (let i = 0; i < byteString.length; i++)
+        ia[i] = byteString.charCodeAt(i)
+
+    return new Blob([ia], { type: mimeString })
+  }
 
 const AIWidgetModal = ({ modalStatus, setModalStatus }) => {
 
     const toggleModal = () => { setModalStatus(!modalStatus) };
     const likedAnImage = id => async () => {
-        console.log(id);
-        const file = dataURLtoFile(`data:text/plain;base64,${base64s[id]}`, `aiImageFile${id}.txt`);
-        const result = await uploadDirect(
-            file, {
-                publicKey: window.UPLOADCARE_PUBLIC_KEY,
-                store: 'auto'
-            }
-        );
-        console.log(result);
+        const bodyFormData = new FormData();
+        bodyFormData.append('UPLOADCARE_PUB_KEY', window.UPLOADCARE_PUBLIC_KEY);
+
+        const ImageURL = `data:image/jpg;base64,${base64s[id]}`;
+        const fileToUpload = DataURIToBlob(ImageURL);
+
+        const file_name = `AI_generated_${uuidv4()}.png`;
+        bodyFormData.append(file_name, fileToUpload, file_name);
+    
+        const options = {
+            method: 'POST',
+            body: bodyFormData
+        }
+
+        try {
+            const response = await fetch("https://upload.uploadcare.com/base/", options);
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
