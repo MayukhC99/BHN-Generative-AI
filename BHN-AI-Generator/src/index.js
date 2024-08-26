@@ -22,7 +22,7 @@ function DataURIToBlob(dataURI) {
     return new Blob([ia], { type: mimeString })
   }
 
-const AIWidgetModal = ({ modalStatus, setModalStatus }) => {
+const AIWidgetModal = ({ modalStatus, setModalStatus, urlCallback = ()=>{} }) => {
 
     const toggleModal = () => { setModalStatus(!modalStatus) };
     const likedAnImage = id => async () => {
@@ -42,7 +42,18 @@ const AIWidgetModal = ({ modalStatus, setModalStatus }) => {
 
         try {
             const response = await fetch("https://upload.uploadcare.com/base/", options);
-            console.log(response);
+            // Check if the response is OK
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            result = await response.json();
+
+             // Extract value from the JSON object
+            // Assuming there is only one key-value pair in the response
+            const [_, fileId] = Object.entries(result)[0];
+            const url = `https://ucarecdn.com/${fileId}/`;
+            console.log(url);
+            urlCallback(url);
         } catch (error) {
             console.error(error);
         }
