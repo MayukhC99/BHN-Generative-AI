@@ -67,6 +67,9 @@ const AIWidgetModal = ({ modalStatus, setModalStatus, urlCallback, howToUseGif }
         }
     };
 
+    const [isLoadingImage, setIsLoadingImage] = useState(true);
+    const [retryCount, setRetryCount] = useState(0);
+
     const generateImageSearchHandler = (ev) => {
         if (retryCount != 3) {
             const imageSearchInput = document.getElementById("search-box");
