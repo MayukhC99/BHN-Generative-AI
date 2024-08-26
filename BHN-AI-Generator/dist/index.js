@@ -35,14 +35,13 @@ function DataURIToBlob(dataURI) {
 var AIWidgetModal = function AIWidgetModal(_ref) {
   var modalStatus = _ref.modalStatus,
     setModalStatus = _ref.setModalStatus,
-    _ref$urlCallback = _ref.urlCallback,
-    urlCallback = _ref$urlCallback === void 0 ? function () {} : _ref$urlCallback;
+    urlCallback = _ref.urlCallback;
   var toggleModal = function toggleModal() {
     setModalStatus(!modalStatus);
   };
   var likedAnImage = function likedAnImage(id) {
     return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var bodyFormData, ImageURL, fileToUpload, file_name, options, response, _Object$entries$, _, fileId, url;
+      var bodyFormData, ImageURL, fileToUpload, file_name, options, response, result, _Object$entries$, _, fileId, url;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -77,17 +76,18 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
             url = "https://ucarecdn.com/".concat(fileId, "/");
             console.log(url);
             urlCallback(url);
-            _context.next = 25;
+            toggleModal(false);
+            _context.next = 26;
             break;
-          case 22:
-            _context.prev = 22;
+          case 23:
+            _context.prev = 23;
             _context.t0 = _context["catch"](7);
             console.error(_context.t0);
-          case 25:
+          case 26:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[7, 22]]);
+      }, _callee, null, [[7, 23]]);
     }));
   };
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Modal, {

@@ -22,7 +22,7 @@ function DataURIToBlob(dataURI) {
     return new Blob([ia], { type: mimeString })
   }
 
-const AIWidgetModal = ({ modalStatus, setModalStatus, urlCallback = ()=>{} }) => {
+const AIWidgetModal = ({ modalStatus, setModalStatus, urlCallback }) => {
 
     const toggleModal = () => { setModalStatus(!modalStatus) };
     const likedAnImage = id => async () => {
@@ -46,7 +46,7 @@ const AIWidgetModal = ({ modalStatus, setModalStatus, urlCallback = ()=>{} }) =>
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            result = await response.json();
+            const result = await response.json();
 
              // Extract value from the JSON object
             // Assuming there is only one key-value pair in the response
@@ -54,6 +54,7 @@ const AIWidgetModal = ({ modalStatus, setModalStatus, urlCallback = ()=>{} }) =>
             const url = `https://ucarecdn.com/${fileId}/`;
             console.log(url);
             urlCallback(url);
+            toggleModal(false);
         } catch (error) {
             console.error(error);
         }
