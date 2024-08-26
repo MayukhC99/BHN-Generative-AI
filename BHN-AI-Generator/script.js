@@ -115,7 +115,7 @@ async function AWSTitan(container) {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            "prompt": "Mountain lion sleeping"
+            "prompt": "Proud of you. Have fun at school"
         })
     }
 

@@ -11,7 +11,7 @@ var _reactstrap = require("reactstrap");
 var _reactLoadingSkeleton = _interopRequireWildcard(require("react-loading-skeleton"));
 require("react-loading-skeleton/dist/skeleton.css");
 var _uuid = require("uuid");
-var _base = _interopRequireDefault(require("./base64"));
+var _exampleBase = _interopRequireDefault(require("./exampleBase64"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
@@ -58,7 +58,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
           case 0:
             bodyFormData = new FormData();
             bodyFormData.append('UPLOADCARE_PUB_KEY', window.UPLOADCARE_PUBLIC_KEY);
-            ImageURL = "data:image/jpg;base64,".concat(_base["default"][id]);
+            ImageURL = "data:image/jpg;base64,".concat(_exampleBase["default"][id]);
             fileToUpload = DataURIToBlob(ImageURL);
             file_name = "AI_generated_".concat((0, _uuid.v4)(), ".png");
             bodyFormData.append(file_name, fileToUpload, file_name);
@@ -160,7 +160,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
     onClick: likedAnImage(0)
   }, !isLoadingImage && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.CardImg, {
     alt: "Card image cap",
-    src: "data:image/png;base64, ".concat(_base["default"][0]),
+    src: "data:image/png;base64, ".concat(_exampleBase["default"][0]),
     top: true,
     width: "100%",
     className: "card-image"
@@ -177,7 +177,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
     onClick: likedAnImage(1)
   }, !isLoadingImage && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.CardImg, {
     alt: "Card image cap",
-    src: "data:image/png;base64, ".concat(_base["default"][1]),
+    src: "data:image/png;base64, ".concat(_exampleBase["default"][1]),
     top: true,
     width: "100%",
     className: "card-image"
@@ -194,7 +194,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
     onClick: likedAnImage(2)
   }, !isLoadingImage && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.CardImg, {
     alt: "Card image cap",
-    src: "data:image/png;base64, ".concat(_base["default"][2]),
+    src: "data:image/png;base64, ".concat(_exampleBase["default"][2]),
     top: true,
     width: "100%",
     className: "card-image"
@@ -211,7 +211,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
     onClick: likedAnImage(3)
   }, !isLoadingImage && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.CardImg, {
     alt: "Card image cap",
-    src: "data:image/png;base64, ".concat(_base["default"][3]),
+    src: "data:image/png;base64, ".concat(_exampleBase["default"][3]),
     top: true,
     width: "100%",
     className: "card-image"

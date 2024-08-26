@@ -12,7 +12,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import { v4 as uuidv4 } from 'uuid';
 
-import base64s from './base64';
+import base64s from './exampleBase64';
 
 function DataURIToBlob(dataURI) {
     const splitDataURI = dataURI.split(',')
