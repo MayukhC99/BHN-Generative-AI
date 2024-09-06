@@ -51,7 +51,7 @@ var AIWidgetModal = function AIWidgetModal(_ref) {
     setModalStatus(!modalStatus);
   };
   var likedAnImage = function likedAnImage(id) {
-    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    return /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var bodyFormData, ImageURL, fileToUpload, file_name, options, response, result, _Object$entries$, _, fileId, url;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
